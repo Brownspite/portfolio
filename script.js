@@ -37,10 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBtn && navLinks) {
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('open');
+            menuBtn.classList.toggle('active');
         });
 
         navLinks.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', () => navLinks.classList.remove('open'));
+            a.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                menuBtn.classList.remove('active');
+            });
         });
     }
 
