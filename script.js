@@ -44,11 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Active page indicator based on URL
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    // Active page indicator based on URL (handles clean URLs on Vercel as well as .html)
+    let currentPath = window.location.pathname.split('/').pop().toLowerCase();
+    if (!currentPath || currentPath === 'index' || currentPath === 'index.html') {
+        currentPath = 'index.html';
+    } else if (!currentPath.endsWith('.html')) {
+        currentPath = currentPath + '.html';
+    }
+
     document.querySelectorAll('.nav-link').forEach(link => {
-        const linkPage = link.getAttribute('href');
-        if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+        const linkHref = (link.getAttribute('href') || '').toLowerCase();
+        if (linkHref === currentPath) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
