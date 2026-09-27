@@ -255,31 +255,33 @@ main, header, footer {
 /* Hamburger */
 .mobile-toggle {
     display: none;
-    padding: 0.4rem 0.2rem;
+    padding: 0.5rem 0.3rem;
     cursor: pointer;
 }
 
 .hamburger {
     display: block;
-    width: 20px;
-    height: 2px;
-    background: var(--text-primary);
+    width: 24px;
+    height: 2.5px;
+    background: var(--accent);
     position: relative;
+    border-radius: 2px;
     transition: background 0.2s ease;
 }
 
 .hamburger::before, .hamburger::after {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 2px;
-    background: var(--text-primary);
+    width: 24px;
+    height: 2.5px;
+    background: var(--accent);
     left: 0;
+    border-radius: 2px;
     transition: transform 0.3s ease, top 0.3s ease;
 }
 
-.hamburger::before { top: -6px; }
-.hamburger::after { top: 6px; }
+.hamburger::before { top: -7px; }
+.hamburger::after { top: 7px; }
 
 .mobile-toggle.active .hamburger {
     background: transparent;
@@ -288,11 +290,13 @@ main, header, footer {
 .mobile-toggle.active .hamburger::before {
     top: 0;
     transform: rotate(45deg);
+    background: var(--accent);
 }
 
 .mobile-toggle.active .hamburger::after {
     top: 0;
     transform: rotate(-45deg);
+    background: var(--accent);
 }
 
 /* --------------------------------------------------------------------------
@@ -808,17 +812,22 @@ main, header, footer {
         top: calc(3px + 56px);
         left: 0;
         width: 100%;
-        background: var(--nav-bg);
+        background: var(--bg-primary);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 2rem 1.8rem 2.5rem;
         gap: 1.3rem;
         border-bottom: 1px solid var(--border);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
         transform: translateY(-160%);
         transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 999;
+    }
+
+    [data-theme="light"] .nav-links {
+        background: var(--bg-primary);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
     }
 
     .nav-links.open {
